@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import Button from "./Button";
 
 const GeneratePassword = () => {
 
   const [lengthPassword, setLengthPassword] = useState(5);
   const [showPassword, setShowPassword] = useState('---password will be here---')
 
-  const passwordGenerator = (lengthPassword) => {
+  const passwordGenerator = (len) => {
     let password = "";
     const chars = [
       "abcdefghijklmnopqrstuvwxyz",
@@ -15,19 +14,24 @@ const GeneratePassword = () => {
       "!@#$%^&*()_+|?><-+*/°",
       "öäüß",
     ];
-
     let charStr = chars.toString();
-    for (let i = 0; i < lengthPassword ; i++) {
+    for (let i = 0; i < len; i++) {
       password += charStr.charAt(Math.floor(Math.random() * charStr.length))
     }
     return password
   };
 
-  console.log(passwordGenerator(lengthPassword))
+  const handleClick = (e) => {
+    e.preventDefault();
+    setShowPassword(passwordGenerator(lengthPassword));
+    console.log(passwordGenerator(lengthPassword))
+  }
+
+  //console.log(passwordGenerator(lengthPassword))
 
   return <div>
-    <input type="text" value={lengthPassword} onChange={(e)=> setLengthPassword(e.target.value)}/>
-    <Button onClick = {()=>passwordGenerator(setLengthPassword())}/>
+    <input type="text" value={lengthPassword} onChange={(e) => setLengthPassword(e.target.value)} />
+    <button onClick={handleClick}>Click</button>
     <p>{showPassword}</p>
   </div>;
 };
