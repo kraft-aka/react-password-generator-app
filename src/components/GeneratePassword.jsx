@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CopyButton from "./CopyButton";
 
 const GeneratePassword = () => {
   const [lengthPassword, setLengthPassword] = useState(5);
@@ -43,6 +44,7 @@ const GeneratePassword = () => {
       ) : (
         lengthPassword && <p>{showPassword}</p>
       )}
+      <CopyButton txtToCopy={showPassword} />
     </div>
   );
 };
