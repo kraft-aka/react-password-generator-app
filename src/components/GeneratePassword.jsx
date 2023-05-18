@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import CopyButton from "./CopyButton";
 
 const GeneratePassword = () => {
-  const [lengthPassword, setLengthPassword] = useState(5);
-  const [showPassword, setShowPassword] = useState(
-    "---password will be here---"
-  );
+  const [lengthPassword, setLengthPassword] = useState("");
+  const [showPassword, setShowPassword] = useState("");
 
   const passwordGenerator = (len) => {
     let password = "";
@@ -26,7 +24,6 @@ const GeneratePassword = () => {
   const handleClick = (e) => {
     e.preventDefault();
     setShowPassword(passwordGenerator(lengthPassword));
-    console.log(passwordGenerator(lengthPassword));
   };
 
   //console.log(passwordGenerator(lengthPassword))
@@ -37,12 +34,18 @@ const GeneratePassword = () => {
         type="text"
         value={lengthPassword}
         onChange={(e) => setLengthPassword(e.target.value)}
+        className="form-control mb-3 mt-3"
+        placeholder="Type the length of the password..."
       />
-      <button onClick={handleClick}>Click</button>
+      <button onClick={handleClick} className="btn btn-primary mt-3">
+        Click
+      </button>
       {!lengthPassword || lengthPassword == 0 ? (
-        <p>Please provide the length for the passoword</p>
+        <p className="text-main mt-3 ">
+          Please provide the length for the password
+        </p>
       ) : (
-        lengthPassword && <p>{showPassword}</p>
+        lengthPassword && <p className="text-main fw-bold mt-3">{showPassword}</p>
       )}
       <CopyButton txtToCopy={showPassword} />
     </div>

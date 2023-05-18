@@ -7,6 +7,7 @@ export const useCopyToClipboard = () => {
   const handleCopy = (txtToCopy) => {
     copy(txtToCopy.toString());
     setIsCopied(true);
+    alert('Copied')
   };
 
   return [isCopied, handleCopy];
