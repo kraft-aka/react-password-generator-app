@@ -29,7 +29,7 @@ const GeneratePassword = () => {
   //console.log(passwordGenerator(lengthPassword))
 
   return (
-    <div>
+    <div className="d-flex flex-column justify-content-center align-items-center mb-3 p-5">
       <input
         type="text"
         value={lengthPassword}
@@ -45,7 +45,9 @@ const GeneratePassword = () => {
           Please provide the length for the password
         </p>
       ) : (
-        lengthPassword && <p className="text-main fw-bold mt-3">{showPassword}</p>
+        lengthPassword && (
+          <p className="text-main fw-bold mt-3">{showPassword}</p>
+        )
       )}
       <CopyButton txtToCopy={showPassword} />
     </div>
